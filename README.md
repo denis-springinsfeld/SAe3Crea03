@@ -3,3 +3,9 @@
 V1.0.0
 
 [Githubpage](https://denis-springinsfeld.github.io/SAe3Crea03/)
+
+## Lottie vs DotLottie
+
+[dotlottie](https://dotlottie.io/)
+
+[lottie](https://lottiefiles.com/)

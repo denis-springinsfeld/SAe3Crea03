@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <style>
+      .disabled {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    </style>
+    <title>@lottiefiles/dotlottie-web | basic example</title>
+  </head>
+  <body>
+    <!-- Canvas element where the Lottie animation will be rendered -->
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <button id="play" class="disabled">Play</button>
+    <button id="pause" class="">Pause</button>
+    <script type="module">
+      import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
+
+      const dotLottie = new DotLottie({
+        autoplay: true,
+        loop: true,
+        canvas: document.getElementById("canvas"),
+        // src: "https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie", // or .json file
+        src: "data/animation.lottie",
+      });
+
+      const playBtn = document.getElementById("play");
+      const pauseBtn = document.getElementById("pause");
+      playBtn.addEventListener("click", () => {
+        dotLottie.play();
+        playBtn.classList.add("disabled");
+        pauseBtn.classList.remove("disabled");
+      });
+      pauseBtn.addEventListener("click", () => {
+        dotLottie.pause();
+        playBtn.classList.remove("disabled");
+        pauseBtn.classList.add("disabled");
+      });
+    </script>
+  </body>
+</html>
+
+<!-- https://developers.lottiefiles.com/docs/dotlottie-player/dotlottie-web/ -->

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Animation with steps()</title>
+    <style>
+      body {
+        height: 300vh;
+        background: #24aecd;
+        display: flex;
+      }
+      .player {
+        position: fixed;
+        width: 200px;
+        height: 200px;
+
+        border: 4px solid white;
+        box-shadow: 2px 3px 4px #000;
+
+        background: url("./data/robby-slides.png") left 10px;
+        /* Utilisation de la proriété step */
+        /* animation: play 1s steps(2) infinite;
+        animation-play-state: paused; */
+      }
+
+      @keyframes play {
+        /* animation du background-position-x */
+        0% {
+          background-position-x: -200px;
+        }
+        100% {
+          background-position-x: -600px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="player"></div>
+
+    <script>
+      // Récupération de l'élément
+      const player = document.querySelector(".player");
+      // Position de départ
+      let lastScrollPosition = 0;
+      let scrollTimeout;
+
+      window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY - lastScrollPosition;
+        lastScrollPosition = window.scrollY;
+
+        player.style.animation = "play 1s steps(2) infinite";
+        player.style.transform =
+          scrollPosition < 0 ? "scale(-1, 1)" : "scale(1, 1)";
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          // Reset animation
+          player.style.animation = "none";
+          player.style.transform = "scale(1, 1)";
+          player.style.backgroundPositionX = "0px";
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
