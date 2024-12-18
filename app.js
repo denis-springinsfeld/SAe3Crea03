@@ -11,6 +11,7 @@ let scrollTween = gsap.to(sections, {
     trigger: ".container",
     pin: true,
     scrub: 0.1,
+    end: "+=10000", // Adjust this value to control the speed
   },
 });
 
